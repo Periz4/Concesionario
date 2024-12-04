@@ -24,8 +24,16 @@ def siguienteCoche():
     lblprecioOgData.config(text=listaCoches[Cochef.cont].precioOg)
     lblprecioActualData.config(text=listaCoches[Cochef.cont].precioActual)
     lblañoFabricacionData.config(text=listaCoches[Cochef.cont].añoFabricacion)
-    lblCVsMotorData.config(text=listaCoches[CochefHibrido.cont].CVsMotor)
-    lblCVsElectricosData.config(text=listaCoches[CochefHibrido.cont].CVsElectricos)
+    if type(listaCoches[Cochef.cont]) == CochefHibrido:
+        lblCVsMotorData.config(text=listaCoches[Cochef.cont].CVsMotor)
+        lblCVsElectricosData.config(text=listaCoches[Cochef.cont].CVsElectricos)
+        lblnºBateriasData.config(text=listaCoches[Cochef.cont].nºBaterias)
+    else:
+        lblCVsMotorData.config(text="No corresponde")
+        lblCVsElectricosData.config(text="No corresponde")
+        lblnºBateriasData.config(text="No corresponde")
+        
+
 
 coche1=CochefHibrido("SF90 Stradale", "Moderno", 1000, 1570, 800, 3990, "V8", "6.1L/100km", "4 ruedas", "Automático", 8, "450.000", "450.000", 2019, 780, 220, 1)
 coche2=Cochef("F40", "Clásico", 478, 1254, 577, 2936, "V8", "8.5L/100km", "Trasera", "Manual", 5, "400.000", "Entre 2 y 3 millones", 1987)
@@ -46,7 +54,7 @@ listaCoches=[coche1, coche2, coche3, coche4, coche5, coche6, coche7, coche8, coc
 
 window = tk.Tk()
 window.title("Concesionario")
-window.geometry("500x500")
+window.geometry("500x425")
 
 lblTitulo=tk.Label(window, text="Concesionario Ferrari")
 lblTitulo.pack()
@@ -134,7 +142,10 @@ lblCVsElectricos.grid(column="1", row="16")
 lblCVsElectricosData=tk.Label(frmInfoCoches, text=listaCoches[0].CVsElectricos)
 lblCVsElectricosData.grid(column="2", row="16")
 
-
+lblnºBaterias=tk.Label(frmInfoCoches, text="Número de baterías")
+lblnºBaterias.grid(column="1", row="17")
+lblnºBateriasData=tk.Label(frmInfoCoches, text=listaCoches[0].nºBaterias)
+lblnºBateriasData.grid(column="2", row="17")
 
 frmBotones=tk.Frame(window, padx=20, pady=20)
 frmBotones.pack()
