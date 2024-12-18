@@ -1,4 +1,5 @@
 import tkinter as tk 
+from PIL import Image, ImageTk
 
 from CocheTipo import Cochef
 from CocheTipo import CochefHibrido
@@ -152,5 +153,16 @@ frmBotones.pack()
 
 btnSiguenteCoche=tk.Button(window, text=("Siguiente"), command=siguienteCoche)
 btnSiguenteCoche.pack()
+
+fotoCoche=Image.open("FotosCoches/sf90.jpg")
+fotoCoche_tk=ImageTk.PhotoImage(fotoCoche)
+
+label_fotoCoche = tk.label(window, Image=fotoCoche_tk)
+label_fotoCoche.pack()
+
+btnMostrarFoto=tk.Button(window, text=("Mostrar Foto"), command=fotoCoche)
+btnMostrarFoto.pack()
+
+
 
 window.mainloop()
